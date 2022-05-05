@@ -77,4 +77,59 @@ public class ConexionCRUD {
         }
         
     }
+    //Metodo para desplegar registros
+    public void desplegarRegistros(String tablaBuscar, String campoBuscar, String condicionBuscar)throws SQLException{
+        //Cargar la conexión
+        ConexionCRUD conectar = new ConexionCRUD();
+        Connection cone = conectar.getConnection();
+        try{
+            Statement stmt;
+            String sqlQueryStmt;
+            if(condicionBuscar.equals("")){
+                sqlQueryStmt = "SELECT * FROM " + tablaBuscar + " ;";
+            }else {
+                sqlQueryStmt = "SELECT " + campoBuscar + " FROM " + tablaBuscar + " WHERE " + condicionBuscar + " ;";
+            }
+            stmt = cone.createStatement();
+            stmt.executeQuery(sqlQueryStmt);
+            //Le indicamos que ejecute la consulata de la tabla y la pasamos por argumentos nuestra sentencia
+            try(ResultSet miResultSet = stmt.executeQuery(sqlQueryStmt)){
+                if(miResultSet.next()){ //Ubica el curso en la primera fila de la tabla de resultado
+                    ResultSetMetaData metaData = miResultSet.getMetaData();
+                    int numColumnas = metaData.getColumnCount(); //Obtiene el número de columnas de la consulta
+                    System.out.println("<< REGISTROS ALMACENADOS >>");
+                    System.out.println();
+                    for (int i = 1; i <= numColumnas; i++){
+                        //Muestra los titulos de las columnas y %-20s\t indica la separación entre columnas
+                        if(i == 3){
+                            System.out.printf("%-35s\t", metaData.getColumnName(i));
+                        }else{
+                           System.out.printf("%-20s\t", metaData.getColumnName(i)); 
+                        }
+                    }
+                    System.out.println();
+                    do{
+                        for(int i = 1; i <= numColumnas; i++){
+                            if(i == 3){
+                                System.out.printf("%-35s\t", miResultSet.getObject(i));
+                            }else{
+                                System.out.printf("%-20s\t", miResultSet.getObject(i));
+                            }
+                        }
+                        System.out.println();
+                    }while(miResultSet.next());
+                    System.out.println();
+                }else{
+                    System.out.println("No se han encontrado registros");
+                }
+                miResultSet.close(); //Cerrar el ResultSet
+            }finally{
+                //Cerrar el Statement y la Conexion: Se cierran en orden inverso de como se han abierto
+                stmt.close();
+                cone.close();
+            }
+        }catch (SQLException ex){
+            System.out.println("Ha ocurrido el siguiente error: " + ex.getMessage());
+        }
+    }
 }
