@@ -29,4 +29,28 @@ public class ConexionCRUD {
             System.out.println("Conexión fallida! Error! : " + e.getMessage());
         }
     }
+    //Metodo para obtener el objeto conexion
+    public Connection getConnection(){
+        return conexion; //Devuelve el objeto conexion
+    }
+    //Mètodo para guardar registros
+    public void guardarRegistros(String tabla, String camposTabla, String valoresCampos){
+        //cargar la conexión
+        ConexionCRUD conectar = new ConexionCRUD();
+        Connection cone = conectar.getConnection();
+        try{
+            //Definir la sentencia sql
+            String sqlQueryStmt = "INSERT INTO " + tabla + " (" + camposTabla + ") VALUES (" + valoresCampos + ");";
+            //Establecemos la comunicación entre nuestra aplicación java y la base de datos
+            Statement stmt; //Envia sentencias sql a la base de datos
+            stmt = cone.createStatement();
+            stmt.executeUpdate(sqlQueryStmt); //Ejecutar la sentencia sql
+            //Cerrar el statement y la conexión se cierran en orden de como se han abierto
+            stmt.close();
+            cone.close();
+            System.out.println("Registro guardado correctamente!");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
