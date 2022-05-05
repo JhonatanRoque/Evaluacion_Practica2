@@ -15,24 +15,24 @@ System.out.println("<<<<< ACTUALIZAR REGISTROS >>>>>");
 
 System.out.println("Ingresar id del registro a modificar: ");
 
-e.setId_Estudiante(leer.nextInt());
+e.setIdEstudiante(leer.nextInt());
 
 String tablaB="tb_Estudiantes";
 
 String campoB= "id_estudiante, carnet_estudiante, nom_estudiante, ape_estudiante, edad_estudiante";
 
 
-String condicionB="id_estudiante = "+e.getId_estudiante();
+String condicionB="id_estudiante = "+e.getIdEstudiante();
 utilerias.desplegarRegistros(tablaB, campoB, condicionB); 
 System.out.println("Nombre: ");
 
-e.setNom_estudiante(leer.next());
+e.setNomEstudiante(leer.next());
 System.out.println("Apellido: ");
-e.setApe_estudiante(leer.next());
+e.setApeEstudiante(leer.next());
 System.out.println("Carnet: ");
-e.setCarnet_estudiante(leer.nextLine()); 
+e.setCarnetEstudiante(leer.nextLine()); 
 
-String camposValoresnuevos="carnet_estudiante='"+e.getCarnet_estudiante()+"', nom_estudiante= '"+e.getNom_estudiante()+"', ape_estudiante='"+e.getApe_estudiante()+"', edad_estudiante='"+e.getEdad_estudiante();
+String camposValoresnuevos="carnet_estudiante='"+e.getCarnetEstudiante()+"', nom_estudiante= '"+e.getNomEstudiante()+"', ape_estudiante='"+e.getApeEstudiante()+"', edad_estudiante='"+e.getEdadEstudiante();
 
 utilerias.actualizarEliminarRegistro(tablaB, camposValoresnuevos, condicionB); 
 System.out.println("Modificado correctamente!"); MenuPrincipal.desplegarMenu();
