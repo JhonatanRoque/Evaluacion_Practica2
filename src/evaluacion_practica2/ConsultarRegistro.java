@@ -6,6 +6,17 @@ public class ConsultarRegistro {
         mostrarResultados();
     }
 private void mostrarResultados() throws SQLException{
+    try{
+        ConexionCRUD utilerias = new
+    ConexionCRUD();
+            String tabla = "tb_estudiante";
+            String composTabla = "*";
+            String condicionBuscar = "";
+            utilerias.desplegarresgistros(tabla, camposTabla, condicionBuscar);
+            
     
+    }catch (SQLExcetion ex){
+        System.out.println("Ha ocurrido el siguiente error: " );
+    }
 }    
 }
