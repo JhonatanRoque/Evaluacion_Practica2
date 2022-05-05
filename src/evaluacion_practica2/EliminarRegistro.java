@@ -6,4 +6,20 @@ import java.util.Scanner;
 
 public class EliminarRegistro {
     
+    EliminarRegistro() throws SQLException{
+        Scanner leer = new Scanner (System.in);
+        ConexionCRUD utilerias = new ConexionCRUD();
+        System.out.println("-------ELIMINAR REGISTRO-------");
+        
+        System.out.println("Ingresar el id del registro: ");
+        String idEstudianteEliminar = leer.next();
+        String tabla = "tb_estudiante";
+        String campo = "*";
+        String condicion = "id_estudiante = " + idEstudianteEliminar;
+        utilerias.desplegarRegistros(tabla, campo, condicion);
+        
+        System.out.println("Presionar << X >> para confirmar: ");
+        String confirmarBorrar = leer.next();
+        
+    }
 }
