@@ -53,4 +53,28 @@ public class ConexionCRUD {
             System.out.println(e.getMessage());
         }
     }
+    //metodo para actualizar registros
+    public void actualizarEliminarRegistro(String tabla, String valoresCamposNuevos, String condicion){
+        //Cargar la conexión
+        ConexionCRUD conectar = new ConexionCRUD();
+        Connection cone = conectar.getConnection();
+        try{
+            Statement stmt;
+            String sqlQueryStmt;
+            //Verificar que valoresCamposNuevos venga vacia y asi seleccionar si es borrar o actualizar registro
+            if(valoresCamposNuevos.isEmpty()){
+                sqlQueryStmt = "DELETE FROM " + tabla + " WHERE " + condicion + ";";
+            }else{
+                sqlQueryStmt = "UPDATE " + tabla + " SET " + valoresCamposNuevos + " WHERE " + condicion + " ;";
+                
+            }
+            stmt = cone.createStatement();
+            stmt.executeUpdate(sqlQueryStmt);
+            stmt.close();
+            cone.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+    }
 }
