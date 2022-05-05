@@ -23,6 +23,12 @@ public class CrearRegistro {
         System.out.println("Ingrese la edad del estudiante: ");
         person.setEdadEstudiante(Integer.parseInt(leer.nextLine()));
         
+        String tabla = "tb_estudiante";
+        String camposTabla = "carnet_estudiante, nom_estudiante, ape_estudiante, edad_estudiante";
+        String valoresCampos = "'" + person.getCarnetEstudiante() + "','" + person.getNomEstudiante() + "','" + person.getApeEstudiante() + "','" + person.getEdadEstudiante() + "'";
+        ConexionCRUD utilerias = new ConexionCRUD();
+        utilerias.guardarRegistros(tabla, camposTabla, valoresCampos);
         
+        MenuPrincipal.desplegarMenu();
     }
 }
