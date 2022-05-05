@@ -18,14 +18,16 @@ public class EliminarRegistro {
         String condicion = "id_estudiante = " + idEstudianteEliminar;
         utilerias.desplegarRegistros(tabla, campo, condicion);
         
-        System.out.println("Presionar << X >> para confirmar: ");
+        System.out.println("Presionar << Y >> para confirmar, << N >> para cancelar: ");
         String confirmarBorrar = leer.next();
         
-        if("X".equals(confirmarBorrar)) {
+        if("Y".equals(confirmarBorrar)) {
             String valoresCamposNuevos = "";
             
             utilerias.actualizarEliminarRegistro(tabla, valoresCamposNuevos, condicion);
             System.out.println("EL REGISTRO SE HA ELIMINADO CORRECTAMENTE!");
+        }else if("N".equals(confirmarBorrar)){
+            System.out.println("Se cancelo la accion!");
         }
         
         MenuPrincipal.desplegarMenu();

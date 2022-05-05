@@ -38,7 +38,7 @@ public class MenuPrincipal {
                 Update update = new Update();
                 break;
             case "4":
-                //Delete delete = new Delete();
+                EliminarRegistro eliminar = new EliminarRegistro();
                 break;
             case "5":
                 System.exit(0);
