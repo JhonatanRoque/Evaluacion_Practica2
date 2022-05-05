@@ -32,7 +32,7 @@ public class MenuPrincipal {
                 CrearRegistro crear = new CrearRegistro();
                 break;
             case "2":
-                //Read read = new Read();
+                ConsultarRegistro consultar = new ConsultarRegistro();
                 break;
             case "3":
                 Update update = new Update();
