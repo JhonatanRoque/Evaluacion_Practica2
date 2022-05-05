@@ -29,16 +29,16 @@ public class MenuPrincipal {
         //Despliegue de menu basado en la opción seleccionada
         switch(opcionMenu){
             case "1":
-                //Create create = new Create();
+                CrearRegistro crear = new CrearRegistro();
                 break;
             case "2":
                 //Read read = new Read();
                 break;
             case "3":
-                //Update update = new Update();
+                Update update = new Update();
                 break;
             case "4":
-                //Delete delete = new Delete();
+                EliminarRegistro eliminar = new EliminarRegistro();
                 break;
             case "5":
                 System.exit(0);
