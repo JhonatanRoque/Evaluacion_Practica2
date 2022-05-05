@@ -27,6 +27,7 @@ public class EliminarRegistro {
             utilerias.actualizarEliminarRegistro(tabla, valoresCamposNuevos, condicion);
             System.out.println("EL REGISTRO SE HA ELIMINADO CORRECTAMENTE!");
         }
+        
         MenuPrincipal.desplegarMenu();
         
     }
