@@ -8,7 +8,7 @@ public class CrearRegistro {
     
     CrearRegistro() throws SQLException{
     Persona person = new Persona ();
-    Scanner leer = new Scanner ();
+    Scanner leer = new Scanner(System.in);
     
         System.out.println("-------CREAR NUEVO REGISTRO-------");
         
