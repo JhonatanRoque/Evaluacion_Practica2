@@ -21,5 +21,13 @@ public class EliminarRegistro {
         System.out.println("Presionar << X >> para confirmar: ");
         String confirmarBorrar = leer.next();
         
+        if("X".equals(confirmarBorrar)) {
+            String valoresCamposNuevos = "";
+            
+            utilerias.actualizarEliminarRegistro(tabla, valoresCamposNuevos, condicion);
+            System.out.println("EL REGISTRO SE HA ELIMINADO CORRECTAMENTE!");
+        }
+        MenuPrincipal.desplegarMenu();
+        
     }
 }
